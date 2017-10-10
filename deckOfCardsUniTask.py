@@ -1,15 +1,15 @@
-#A program that selects a card from a deck and adds it to a list
+#A program that selects a card from a deck(list) and adds it to a hand(list). Also allows user to remove cards from hand, and refuses duplicate cards.
 
 #Strings for output
-heart = ' of hearts'
-club = ' of clubs'
-diomond = ' of diamonds'
-spade = ' of spades'
+heart = ' of Hearts'
+club = ' of Clubs'
+diomond = ' of Diamonds'
+spade = ' of Spades'
 
-ace = 'ace'
-jack = 'jack'
-queen = 'queen'
-king = 'king'
+ace = 'Ace'
+jack = 'Jack'
+queen = 'Queen'
+king = 'King'
 
 yourHand = '\nYour hand is now: '
 errorMsg = '\nYour entry was out of bounds. Please try again. '
@@ -30,41 +30,41 @@ cardArray = [ ace + heart , '2' + heart, '3' + heart, '4' + heart,
              '9' + spade, '10' + spade, jack + spade, queen + spade, king + spade,
               ]
 #counter
-choiseCount = 0
+choiceCount = 0
 
 #Main loop
 while True:
 
     #Validate input, add to hand, print as set to avoid duplicate cards
     try:
-        cardChoise = int(input("\nPlease choose an integer between 1 - 52. Press 0 to exit. "))
+        cardChoice = int(input("\nPlease choose an integer between 1 - 52. Press 0 to exit. "))
     
-        if cardChoise == 0:#End program
+        if cardChoice == 0:#End program
 
             break
 
-        elif cardChoise > 52 or cardChoise < -52:#Out of bounds
+        elif cardChoice > 52 or cardChoice < -52:#Out of bounds
 
             print(errorMsg)
 
-        elif cardChoise < 0 and cardChoise > -53: #Remove card from hand
+        elif cardChoice < 0 and cardChoice > -53: #Remove card from hand
 
-            tempCard = cardArray[(abs(cardChoise) - 1)]
+            tempCard = cardArray[(abs(cardChoice) - 1)]
             print('Removing', tempCard)
             handArray.remove(tempCard)
-        #elif cardChoise < -53:
+        #elif cardChoice < -53:
 
         #    print(errorMsg)
                         
         else:
-            if cardArray[cardChoise - 1] in handArray:
+            if cardArray[cardChoice - 1] in handArray:
                 print('\n Card already in hand')
                 continue
 
-            handArray.append(cardArray[cardChoise - 1])
-            choiseCount = choiseCount + 1
+            handArray.append(cardArray[cardChoice - 1])
+            choiceCount = choiceCount + 1
         
-        print(set(handArray))
+        print(handArray)
 
     except ValueError:
         print(errorMsg)
