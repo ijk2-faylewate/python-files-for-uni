@@ -29,13 +29,11 @@ cardArray = [ ace + heart , '2' + heart, '3' + heart, '4' + heart,
              '5' + spade, '6' + spade, '7' + spade, '8' + spade,
              '9' + spade, '10' + spade, jack + spade, queen + spade, king + spade,
               ]
-#counter
-choiceCount = 0
 
 #Main loop
 while True:
 
-    #Validate input, add to hand, print as set to avoid duplicate cards
+    #Validate input, add to hand, remove from hand, avoid duplicates.
     try:
         cardChoice = int(input("\nPlease choose an integer between 1 - 52. Press 0 to exit. "))
     
@@ -52,18 +50,16 @@ while True:
             tempCard = cardArray[(abs(cardChoice) - 1)]
             print('Removing', tempCard)
             handArray.remove(tempCard)
-        #elif cardChoice < -53:
-
-        #    print(errorMsg)
                         
         else:
-            if cardArray[cardChoice - 1] in handArray:
+
+            if cardArray[cardChoice - 1] in handArray:#If card in hand, go back to the beginging of the loop
+
                 print('\n Card already in hand')
                 continue
 
-            handArray.append(cardArray[cardChoice - 1])
-            choiceCount = choiceCount + 1
-        
+            handArray.append(cardArray[cardChoice - 1])#Add card to hand
+                    
         print(handArray)
 
     except ValueError:
